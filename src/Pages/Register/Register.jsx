@@ -10,7 +10,7 @@ import Loader from '../../Components/Loader/Loader';
 
 const Register = () => {
     const navigate = useNavigate()
-    const { registerUser, updateUserProfile, authLoading, setAuthLoading } = useContext(AuthContext)
+    const { registerUser, updateUserProfile, authLoading, setAuthLoading, googleLogin } = useContext(AuthContext)
     const [showPass, setShowPass] = useState(false);
     const [showCPass, setShowCPass] = useState(false);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -38,6 +38,23 @@ const Register = () => {
             .catch(error => toast.error(error.message))
     }
 
+    // google login 
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                toast.success(`Successfull login with ${user.displayName}`)
+                setAuthLoading(false)
+                navigate('/')
+            })
+            .catch(error => {
+                if (error.message == 'Firebase: Error (auth/popup-closed-by-user).') {
+                    toast.error("Login cancelled by user")
+                    setAuthLoading(false)
+                }
+            })
+    }
+
     if (authLoading) {
         return <Loader />
     }
@@ -53,6 +70,7 @@ const Register = () => {
                             <div className="flex flex-row items-center justify-center lg:justify-start">
                                 <p className="text-lg mb-0 mr-4 text-white">Register with</p>
                                 <button
+                                    onClick={handleGoogleLogin}
                                     type="button"
                                     data-mdb-ripple="true"
                                     data-mdb-ripple-color="light"
