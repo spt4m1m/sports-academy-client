@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../assets/imgs/web_logo.png'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const Navbar = () => {
-    const user = false;
+    const { user } = useContext(AuthContext);
     const navlist = <>
         <li><Link to="/home">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
         {
-            user === true ?
+            user ?
                 <>
                     <li><Link to="dashboard">Dashboard</Link></li>
                     <li><Link to="/profile">Profile</Link></li>
