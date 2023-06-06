@@ -1,16 +1,24 @@
 import React from 'react';
 import logo from '../../assets/imgs/web_logo.png'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const user = false;
     const navlist = <>
-        <li><a href="">Home</a></li>
-        <li><a href="">Instructor</a></li>
-        <li><a href="">Classes</a></li>
+        <li><Link to="/home">Home</Link></li>
+        <li><Link to="/instructors">Instructors</Link></li>
+        <li><Link to="/classes">Classes</Link></li>
         {
-            user == true ? <><li><a href="">Dashboard</a></li>
-                <li><a href="">Profile</a></li></> : <><li><a href="">Login</a></li>
-                <li><a href="">Register</a></li></>
+            user === true ?
+                <>
+                    <li><Link to="dashboard">Dashboard</Link></li>
+                    <li><Link to="/profile">Profile</Link></li>
+                </>
+                :
+                <>
+                    <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/register">Register</Link></li>
+                </>
         }
     </>
     return (
