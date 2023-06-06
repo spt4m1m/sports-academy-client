@@ -20,6 +20,12 @@ export default {
           ".btn-outline:hover": {
             "text-transform": "capitalize",
           },
+          ".btn-primary": {
+            "text-transform": "capitalize",
+          },
+          ".btn-primary:hover": {
+            "text-transform": "capitalize",
+          },
         },
       },
     ],

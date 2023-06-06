@@ -13,6 +13,7 @@ import Profile from './Pages/Profile/Profile.jsx';
 import Login from './Pages/Login/Login.jsx';
 import Register from './Pages/Register/Register.jsx';
 import Dashboard from './Pages/Dashboard/Dashboard.jsx';
+import NotFound404 from './Pages/NotFound404/NotFound404.jsx';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />
+  },
+  {
+    path: "*",
+    element: <NotFound404 />
   }
 ]);
 
