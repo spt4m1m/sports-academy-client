@@ -7,6 +7,22 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      {
+        dark: {
+          ...require("daisyui/src/theming/themes")["[data-theme=dark]"],
+          "primary": "#e1b12c",
+          ".btn-outline": {
+            "text-transform": "capitalize",
+          },
+          ".btn-outline:hover": {
+            "text-transform": "capitalize",
+          },
+        },
+      },
+    ],
+  },
 }
 
