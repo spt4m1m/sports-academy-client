@@ -10,7 +10,7 @@ import Loader from '../../Components/Loader/Loader';
 
 const Login = () => {
     const navigate = useNavigate()
-    const { loginUser, authLoading, setAuthLoading } = useContext(AuthContext)
+    const { loginUser, authLoading, setAuthLoading, googleLogin } = useContext(AuthContext)
     const [showPass, setShowPass] = useState(false);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const onSubmit = data => {
@@ -28,6 +28,24 @@ const Login = () => {
             .catch(error => toast.error(error.message))
     }
 
+
+    // google login 
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                toast.success(`Successfull login with ${user.displayName}`)
+                setAuthLoading(false)
+                navigate('/')
+            })
+            .catch(error => {
+                if (error.message == 'Firebase: Error (auth/popup-closed-by-user).') {
+                    toast.error("Login cancelled by user")
+                    setAuthLoading(false)
+                }
+            })
+    }
+
     if (authLoading) {
         return <Loader />
     }
@@ -43,6 +61,7 @@ const Login = () => {
                             <div className="flex flex-row items-center justify-center lg:justify-start">
                                 <p className="text-lg mb-0 mr-4">Login in with</p>
                                 <button
+                                    onClick={handleGoogleLogin}
                                     type="button"
                                     data-mdb-ripple="true"
                                     data-mdb-ripple-color="light"
