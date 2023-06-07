@@ -22,6 +22,11 @@ import AuthProvider from './Providers/AuthProvider.jsx';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
 import ManageClasses from './Pages/Dashboard/AdminDashboard/ManageClasses.jsx';
 import ManageUsers from './Pages/Dashboard/AdminDashboard/ManageUsers.jsx';
+import MyClasses from './Pages/Dashboard/InstructorDashboard/MyClasses.jsx';
+import AddClass from './Pages/Dashboard/InstructorDashboard/AddClass.jsx';
+import SelectedClass from './Pages/Dashboard/StudentDashboard/SelectedClass.jsx';
+import EnrolledClass from './Pages/Dashboard/StudentDashboard/EnrolledClass.jsx';
+import Payment from './Pages/Dashboard/StudentDashboard/Payment.jsx';
 
 
 const queryClient = new QueryClient()
@@ -65,13 +70,33 @@ const router = createBrowserRouter([
     element: <PrivateRoute><Dashboard /></PrivateRoute>,
     children: [
       {
-        path: "/dashboard/manageClasses",
+        path: "/dashboard/admin/manageClasses",
         element: <PrivateRoute><ManageClasses /></PrivateRoute>
       },
       {
-        path: "/dashboard/manageUsers",
+        path: "/dashboard/admin/manageUsers",
         element: <PrivateRoute><ManageUsers /></PrivateRoute>
-      }
+      },
+      {
+        path: "/dashboard/instructor/myclasses",
+        element: <PrivateRoute><MyClasses /></PrivateRoute>
+      },
+      {
+        path: "/dashboard/instructor/addclass",
+        element: <PrivateRoute><AddClass /></PrivateRoute>
+      },
+      {
+        path: "/dashboard/student/selectedclass",
+        element: <PrivateRoute><SelectedClass /></PrivateRoute>
+      },
+      {
+        path: "/dashboard/student/enrolledclass",
+        element: <PrivateRoute><EnrolledClass /></PrivateRoute>
+      },
+      {
+        path: "/dashboard/student/payment",
+        element: <PrivateRoute><Payment /></PrivateRoute>
+      },
     ]
   },
   {

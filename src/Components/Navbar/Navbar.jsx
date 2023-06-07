@@ -5,9 +5,19 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import defaultprofile from "../../assets/imgs/defaultprofile.jpg"
 import ActiveRoute from '../ActiveRoute/ActiveRoute';
+import useUserRole from '../../hooks/useUserRole/useUserRole';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [userRole] = useUserRole();
+    let dashboardUrl = "";
+    if (userRole == 'admin') {
+        dashboardUrl = "dashboard/admin/manageClasses"
+    } else if (userRole == 'instructor') {
+        dashboardUrl = "dashboard/instructor/myclasses"
+    } else {
+        dashboardUrl = "dashboard/student/selectedclass"
+    }
     const handleLogOut = () => {
         logOut()
             .then(() => toast.success('Logout Successfully'))
@@ -20,7 +30,7 @@ const Navbar = () => {
         {
             user ?
                 <>
-                    <li><Link className='font-semibold' to="dashboard/manageClasses">Dashboard</Link></li>
+                    <li><Link className='font-semibold' to={dashboardUrl}>Dashboard</Link></li>
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
