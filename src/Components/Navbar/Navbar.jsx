@@ -20,7 +20,7 @@ const Navbar = () => {
         {
             user ?
                 <>
-                    <li><Link to="dashboard">Dashboard</Link></li>
+                    <li><Link to="dashboard/manageClasses">Dashboard</Link></li>
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
