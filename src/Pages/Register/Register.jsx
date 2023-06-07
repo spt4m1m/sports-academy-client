@@ -39,7 +39,7 @@ const Register = () => {
                                     }
                                 })
                                 .catch(function (error) {
-                                    console.log(error);
+                                    toast.error(error.message);
                                 });
                         })
                         .catch(error => toast.error(error.message))
@@ -53,9 +53,20 @@ const Register = () => {
         googleLogin()
             .then(result => {
                 const user = result.user;
-                toast.success(`Successfull login with ${user.displayName}`)
-                setAuthLoading(false)
-                navigate('/')
+                const saveUser = { name: user.displayName, email: user.email }
+                axios.post(`${import.meta.env.VITE_APP_API_URL}/users`, saveUser)
+                    .then(data => {
+                        if (data.data.data.insertedId) {
+                            toast.success("Success")
+                            setAuthLoading(false)
+                            navigate('/home')
+                        }
+                    })
+                    .catch(function (error) {
+                        toast.error(error.message)
+                    });
+                toast.success("Success")
+                navigate('/home')
             })
             .catch(error => {
                 if (error.message == 'Firebase: Error (auth/popup-closed-by-user).') {
