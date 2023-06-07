@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import ActiveRoute from '../../Components/ActiveRoute/ActiveRoute';
+import { Icon } from '@iconify/react';
 
 const Dashboard = () => {
     return (
@@ -17,13 +19,14 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-base-200 text-white">
                         {/* <!-- Sidebar content here --> */}
-                        <li><Link to="/dashboard/manageClasses">Manage Classes</Link></li>
-                        <li><Link to="/dashboard/manageUsers">Manage Users</Link></li>
+                        <li><ActiveRoute to="/dashboard/manageClasses"><Icon icon="ic:outline-class" />Manage Classes</ActiveRoute></li>
+                        <li><ActiveRoute to="/dashboard/manageUsers"><Icon icon="fa-regular:user" />Manage Users</ActiveRoute></li>
+                        <div className="divider">OR</div>
+                        <li><Link to="/home"><Icon icon="tabler:home" />Back To Home</Link></li>
                     </ul>
 
                 </div>
             </div>
-            <div className='text-center'><Link className='btn btn-primary' to='/home'>Home</Link></div>
         </div>
     );
 };

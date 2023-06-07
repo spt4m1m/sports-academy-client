@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import defaultprofile from "../../assets/imgs/defaultprofile.jpg"
+import ActiveRoute from '../ActiveRoute/ActiveRoute';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -14,9 +15,9 @@ const Navbar = () => {
             .catch(error => toast.error(`${error.message}`))
     }
     const navlist = <>
-        <li><Link to="/home">Home</Link></li>
-        <li><Link to="/instructors">Instructors</Link></li>
-        <li><Link to="/classes">Classes</Link></li>
+        <li><ActiveRoute to="/home">Home</ActiveRoute></li>
+        <li><ActiveRoute to="/instructors">Instructors</ActiveRoute></li>
+        <li><ActiveRoute to="/classes">Classes</ActiveRoute></li>
         {
             user ?
                 <>
@@ -36,8 +37,8 @@ const Navbar = () => {
                 </>
                 :
                 <>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/register">Register</Link></li>
+                    <li><ActiveRoute to="/login">Login</ActiveRoute></li>
+                    <li><ActiveRoute to="/register">Register</ActiveRoute></li>
                 </>
         }
     </>
