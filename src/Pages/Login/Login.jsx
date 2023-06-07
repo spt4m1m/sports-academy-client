@@ -35,7 +35,6 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 const saveUser = { name: user.displayName, email: user.email };
-                console.log(saveUser);
                 fetch(`${import.meta.env.VITE_APP_API_URL}/users`, {
                     method: 'POST',
                     headers: {

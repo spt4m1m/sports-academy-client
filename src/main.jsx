@@ -6,6 +6,10 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query'
 import Home from './Pages/Home/Home.jsx';
 import Instructors from './Pages/Instructors/Instructors.jsx';
 import Classes from './Pages/Classes/Classes.jsx';
@@ -19,6 +23,8 @@ import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
 import ManageClasses from './Pages/Dashboard/AdminDashboard/ManageClasses.jsx';
 import ManageUsers from './Pages/Dashboard/AdminDashboard/ManageUsers.jsx';
 
+
+const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile />
+        element: <PrivateRoute><Profile /></PrivateRoute>
       },
       {
         path: "/login",
@@ -60,11 +66,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/manageClasses",
-        element: <ManageClasses />
+        element: <PrivateRoute><ManageClasses /></PrivateRoute>
       },
       {
         path: "/dashboard/manageUsers",
-        element: <ManageUsers />
+        element: <PrivateRoute><ManageUsers /></PrivateRoute>
       }
     ]
   },
@@ -76,8 +82,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 )
