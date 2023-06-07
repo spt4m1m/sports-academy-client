@@ -7,6 +7,7 @@ import hidepassimg from '../../assets/imgs/hide-pass.svg'
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Loader from '../../Components/Loader/Loader';
+import axios from 'axios';
 
 const Register = () => {
     const navigate = useNavigate()
@@ -28,9 +29,18 @@ const Register = () => {
                 if (user) {
                     updateUserProfile(user, name, photoUrl)
                         .then(() => {
-                            toast.success("Register Successfully")
-                            setAuthLoading(false)
-                            navigate('/home')
+                            const saveUser = { name: user.displayName, email: user.email }
+                            axios.post(`${import.meta.env.VITE_APP_API_URL}/users`, saveUser)
+                                .then(data => {
+                                    if (data.data.data.insertedId) {
+                                        toast.success("Register Successfully")
+                                        setAuthLoading(false)
+                                        navigate('/home')
+                                    }
+                                })
+                                .catch(function (error) {
+                                    console.log(error);
+                                });
                         })
                         .catch(error => toast.error(error.message))
                 }

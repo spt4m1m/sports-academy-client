@@ -8,7 +8,6 @@ import ActiveRoute from '../ActiveRoute/ActiveRoute';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log(user);
     const handleLogOut = () => {
         logOut()
             .then(() => toast.success('Logout Successfully'))
