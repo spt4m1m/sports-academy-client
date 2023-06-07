@@ -6,7 +6,12 @@ import { useQuery } from 'react-query';
 
 const ManageUsers = () => {
     const { isLoading, data: users, refetch } = useQuery('users', () =>
-        fetch(`${import.meta.env.VITE_APP_API_URL}/users`).then(res =>
+        fetch(`${import.meta.env.VITE_APP_API_URL}/users`, {
+            method: 'GET',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('access-token')}`
+            }
+        }).then(res =>
             res.json()
         )
     );
