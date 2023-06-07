@@ -5,7 +5,7 @@ import Loader from '../../../Components/Loader/Loader';
 import { useQuery } from 'react-query';
 
 const ManageUsers = () => {
-    const { isLoading, data: users } = useQuery('users', () =>
+    const { isLoading, data: users, refetch } = useQuery('users', () =>
         fetch(`${import.meta.env.VITE_APP_API_URL}/users`).then(res =>
             res.json()
         )
@@ -33,7 +33,7 @@ const ManageUsers = () => {
                     <tbody className='text-gray-200'>
                         {/* row 1 */}
                         {
-                            users.map((user, index) => <AllUsers key={user._id} user={user} index={index} />)
+                            users.map((user, index) => <AllUsers key={user._id} user={user} index={index} refetch={refetch} />)
                         }
                     </tbody>
 
