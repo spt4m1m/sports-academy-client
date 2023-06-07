@@ -34,7 +34,7 @@ const Login = () => {
         googleLogin()
             .then(result => {
                 const user = result.user;
-                const saveUser = { name: user.displayName, email: user.email };
+                const saveUser = { name: user.displayName, email: user.email, role: 'student' };
                 fetch(`${import.meta.env.VITE_APP_API_URL}/users`, {
                     method: 'POST',
                     headers: {
