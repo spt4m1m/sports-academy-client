@@ -15,6 +15,7 @@ import Register from './Pages/Register/Register.jsx';
 import Dashboard from './Pages/Dashboard/Dashboard.jsx';
 import NotFound404 from './Pages/NotFound404/NotFound404.jsx';
 import AuthProvider from './Providers/AuthProvider.jsx';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,11 +32,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/instructors",
-        element: <Instructors />
+        element: <PrivateRoute><Instructors /></PrivateRoute>
       },
       {
         path: "/classes",
-        element: <Classes />
+        element: <PrivateRoute><Classes /></PrivateRoute>
       },
       {
         path: "/profile",
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />
+    element: <PrivateRoute><Dashboard /></PrivateRoute>
   },
   {
     path: "*",
