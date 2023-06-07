@@ -3,17 +3,17 @@ import React from 'react';
 import AllUsers from './AllUsers';
 import Loader from '../../../Components/Loader/Loader';
 import { useQuery } from 'react-query';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const ManageUsers = () => {
-    const { isLoading, data: users, refetch } = useQuery('users', () =>
-        fetch(`${import.meta.env.VITE_APP_API_URL}/users`, {
-            method: 'GET',
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('access-token')}`
-            }
-        }).then(res =>
-            res.json()
-        )
+    const [axiosSecure] = useAxiosSecure()
+    const { isLoading, data: users, refetch } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const res = await axiosSecure('/users');
+            return res.data;
+        }
+    }
     );
     if (isLoading) {
         return <Loader />
