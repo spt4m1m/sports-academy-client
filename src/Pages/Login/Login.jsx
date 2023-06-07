@@ -34,9 +34,22 @@ const Login = () => {
         googleLogin()
             .then(result => {
                 const user = result.user;
-                toast.success(`Successfull login with ${user.displayName}`)
-                setAuthLoading(false)
-                navigate('/')
+                const saveUser = { name: user.displayName, email: user.email };
+                console.log(saveUser);
+                fetch(`${import.meta.env.VITE_APP_API_URL}/users`, {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data) {
+                            navigate('/')
+                            toast.success('success')
+                        }
+                    })
             })
             .catch(error => {
                 if (error.message == 'Firebase: Error (auth/popup-closed-by-user).') {
