@@ -16,7 +16,6 @@ const MyClasses = () => {
         }
     }
     );
-    console.log(classes);
     if (isLoading) {
         return <Loader />
     }
