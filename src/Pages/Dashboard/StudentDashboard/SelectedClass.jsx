@@ -43,32 +43,34 @@ const SelectedClass = () => {
         <div>
             <h1 className='text-3xl underline text-center'>Selected Classes</h1>
 
-            <div className="overflow-x-auto mt-10">
-                <table className="table">
-                    {/* head */}
-                    <thead>
-                        <tr className='text-white text-md text-sm'>
-                            <th></th>
-                            <th>Class Name</th>
-                            <th>Available Seat</th>
-                            <th>Price</th>
-                            <th className='text-center'>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            selectedClass.result.map((sclass, index) => <tr key={sclass._id}>
-                                <td>{index + 1}</td>
-                                <td>{sclass.classname}</td>
-                                <td>{sclass.availableseat}</td>
-                                <td>{sclass.price}</td>
-                                <td><button className='btn bg-green-600 normal-case text-white btn-xs'>Pay</button></td>
-                                <td><button onClick={() => deleteSelectedClass(sclass._id)} className='btn bg-red-600 normal-case text-white btn-xs'>Delete</button></td>
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
-            </div>
+            {
+                selectedClass.result.length > 0 ? <div className="overflow-x-auto mt-10">
+                    <table className="table">
+                        {/* head */}
+                        <thead>
+                            <tr className='text-white text-md text-sm'>
+                                <th></th>
+                                <th>Class Name</th>
+                                <th>Available Seat</th>
+                                <th>Price</th>
+                                <th className='text-center'>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                selectedClass.result.map((sclass, index) => <tr key={sclass._id}>
+                                    <td>{index + 1}</td>
+                                    <td>{sclass.classname}</td>
+                                    <td>{sclass.availableseat}</td>
+                                    <td>{sclass.price}</td>
+                                    <td><button className='btn bg-green-600 normal-case text-white btn-xs'>Pay</button></td>
+                                    <td><button onClick={() => deleteSelectedClass(sclass._id)} className='btn bg-red-600 normal-case text-white btn-xs'>Delete</button></td>
+                                </tr>)
+                            }
+                        </tbody>
+                    </table>
+                </div> : <h1 className='text-xl text-primary text-center my-10'>you didn't selected any class yet!</h1>
+            }
         </div>
     );
 };
