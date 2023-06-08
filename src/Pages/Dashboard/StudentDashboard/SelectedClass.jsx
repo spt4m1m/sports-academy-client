@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from 'react-query';
 import Loader from '../../../Components/Loader/Loader';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const SelectedClass = () => {
     const { user } = useContext(AuthContext);
@@ -63,7 +64,7 @@ const SelectedClass = () => {
                                     <td>{sclass.classname}</td>
                                     <td>{sclass.availableseat}</td>
                                     <td>{sclass.price}</td>
-                                    <td><button className='btn bg-green-600 normal-case text-white btn-xs'>Pay</button></td>
+                                    <td><Link to="/dashboard/student/paymentmethod" className='btn bg-green-600 normal-case text-white btn-xs'>Pay</Link></td>
                                     <td><button onClick={() => deleteSelectedClass(sclass._id)} className='btn bg-red-600 normal-case text-white btn-xs'>Delete</button></td>
                                 </tr>)
                             }

@@ -47,7 +47,7 @@ const Dashboard = () => {
                             userRole == 'student' && <>
                                 <li><ActiveRoute to="/dashboard/student/selectedclass"><Icon icon="ic:outline-class" />Selected Classes</ActiveRoute></li>
                                 <li><ActiveRoute to="/dashboard/student/enrolledclass"><Icon icon="fa-regular:user" />Enrolled Class</ActiveRoute></li>
-                                <li><ActiveRoute to="/dashboard/student/payment"><Icon icon="fa-regular:user" />Payment</ActiveRoute></li>
+                                <li><ActiveRoute to="/dashboard/student/paymenthistory"><Icon icon="fluent:payment-48-filled" />Payment</ActiveRoute></li>
                             </>
                         }
                         <div className="divider">OR</div>

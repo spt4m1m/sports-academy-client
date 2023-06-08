@@ -26,9 +26,10 @@ import MyClasses from './Pages/Dashboard/InstructorDashboard/MyClasses.jsx';
 import AddClass from './Pages/Dashboard/InstructorDashboard/AddClass.jsx';
 import SelectedClass from './Pages/Dashboard/StudentDashboard/SelectedClass.jsx';
 import EnrolledClass from './Pages/Dashboard/StudentDashboard/EnrolledClass.jsx';
-import Payment from './Pages/Dashboard/StudentDashboard/Payment.jsx';
+import PaymentHistory from './Pages/Dashboard/StudentDashboard/Payments/PaymentHistory.jsx';
 import Feedback from './Pages/Dashboard/AdminDashboard/Feedback.jsx';
 import UpdateClass from './Pages/Dashboard/InstructorDashboard/UpdateClass.jsx';
+import PaymentMethod from './Pages/Dashboard/StudentDashboard/Payments/PaymentMethod.jsx';
 
 
 const queryClient = new QueryClient()
@@ -104,8 +105,12 @@ const router = createBrowserRouter([
         element: <PrivateRoute><EnrolledClass /></PrivateRoute>
       },
       {
-        path: "/dashboard/student/payment",
-        element: <PrivateRoute><Payment /></PrivateRoute>
+        path: "/dashboard/student/paymenthistory",
+        element: <PrivateRoute><PaymentHistory /></PrivateRoute>
+      },
+      {
+        path: "/dashboard/student/paymentmethod",
+        element: <PrivateRoute><PaymentMethod /></PrivateRoute>
       },
     ]
   },
