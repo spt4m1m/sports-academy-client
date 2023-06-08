@@ -3,6 +3,7 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from 'react-query';
 import Loader from '../../../Components/Loader/Loader';
+import Swal from 'sweetalert2';
 
 const SelectedClass = () => {
     const { user } = useContext(AuthContext);
@@ -17,6 +18,26 @@ const SelectedClass = () => {
     );
     if (isLoading) {
         return <Loader />
+    };
+
+    const deleteSelectedClass = (id) => {
+        fetch(`${import.meta.env.VITE_APP_API_URL}/selectedclass/delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('access-token')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.result.deletedCount > 0) {
+                    Swal.fire({
+                        title: 'Delete Class Success',
+                        icon: 'success'
+                    })
+                    refetch();
+                }
+            })
     }
     return (
         <div>
@@ -42,7 +63,7 @@ const SelectedClass = () => {
                                 <td>{sclass.availableseat}</td>
                                 <td>{sclass.price}</td>
                                 <td><button className='btn bg-green-600 normal-case text-white btn-xs'>Pay</button></td>
-                                <td><button className='btn bg-red-600 normal-case text-white btn-xs'>Delete</button></td>
+                                <td><button onClick={() => deleteSelectedClass(sclass._id)} className='btn bg-red-600 normal-case text-white btn-xs'>Delete</button></td>
                             </tr>)
                         }
                     </tbody>
