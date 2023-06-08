@@ -43,7 +43,9 @@ const SelectedClass = () => {
     return (
         <div>
             <h1 className='text-3xl underline text-center'>Selected Classes</h1>
-
+            <div className='flex justify-center my-5'>
+                <Link to="/dashboard/student/paymentmethod" className='btn bg-green-600 normal-case text-white btn-sm'>Payment</Link>
+            </div>
             {
                 selectedClass.result.length > 0 ? <div className="overflow-x-auto mt-10">
                     <table className="table">
@@ -64,7 +66,6 @@ const SelectedClass = () => {
                                     <td>{sclass.classname}</td>
                                     <td>{sclass.availableseat}</td>
                                     <td>{sclass.price}</td>
-                                    <td><Link to="/dashboard/student/paymentmethod" className='btn bg-green-600 normal-case text-white btn-xs'>Pay</Link></td>
                                     <td><button onClick={() => deleteSelectedClass(sclass._id)} className='btn bg-red-600 normal-case text-white btn-xs'>Delete</button></td>
                                 </tr>)
                             }
