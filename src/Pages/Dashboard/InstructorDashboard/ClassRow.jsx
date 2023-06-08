@@ -1,9 +1,10 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const ClassRow = ({ singleClass, index }) => {
-    const { classname, enrolled, status, feedback } = singleClass;
+    const { classname, enrolled, status, feedback, _id } = singleClass;
     let span;
     switch (status) {
         case 'approved':
@@ -28,7 +29,7 @@ const ClassRow = ({ singleClass, index }) => {
             <td>{enrolled}</td>
             <td className='flex items-center'>{span}</td>
             <td>{feedback ? <button onClick={seeFeedback} className='btn btn-primary btn-sm btn-outline'>see feedback</button> : <span>not given</span>}</td>
-            <td><button className='btn btn-primary btn-outline btn-sm'>update</button></td>
+            <td><Link to={`/dashboard/instructor/updateclass/${_id}`} className='btn btn-primary btn-outline btn-sm'>update</Link></td>
         </tr>
 
     );
