@@ -5,6 +5,19 @@ import { toast } from 'react-hot-toast';
 const ManageClassRow = ({ singleClass, index, refetch }) => {
     const { classimg, classname, instructorname, instructoremail, availableseat, price, status, _id } = singleClass;
 
+    let span;
+    switch (status) {
+        case 'approved':
+            span = <span className='flex items-center'><Icon className='text-green-500' icon="el:ok-sign" />Approved</span>;
+            break;
+        case 'deny':
+            span = <span className='flex items-center'><Icon className='text-red-500' icon="gridicons:cross-circle" />Denied</span>;
+            break;
+        default:
+            span = <span className='flex items-center'><Icon className='text-green-500' icon="material-symbols:circle" />Pending</span>
+    }
+
+
     const approveClass = (id) => {
         const sure = window.confirm('approve this calss?');
         if (sure) {
@@ -57,7 +70,8 @@ const ManageClassRow = ({ singleClass, index, refetch }) => {
             <td>{instructoremail}</td>
             <td>{availableseat}</td>
             <td>{price}Tk.</td>
-            <td className='flex items-center'><Icon className='text-green-500' icon="material-symbols:circle" />{status}</td>
+            {/* <td className='flex items-center'> {status == 'approved' ? <span className='flex items-center'><Icon className='text-green-500' icon="el:ok-sign" />Approved</span> : <span className='flex items-center'><Icon className='text-red-500' icon="gridicons:cross-circle" />Denied</span>}</td> */}
+            <td>{span}</td>
             <td>
                 <div>
                     <td>{status == 'approved' ? <span className='flex items-center'><Icon className='text-green-500' icon="el:ok-sign" />Approved</span> : <button disabled={status == 'deny'} onClick={() => approveClass(_id)} className='btn bg-green-600 normal-case text-white btn-xs'>Approve</button>}</td>
