@@ -27,6 +27,7 @@ import AddClass from './Pages/Dashboard/InstructorDashboard/AddClass.jsx';
 import SelectedClass from './Pages/Dashboard/StudentDashboard/SelectedClass.jsx';
 import EnrolledClass from './Pages/Dashboard/StudentDashboard/EnrolledClass.jsx';
 import Payment from './Pages/Dashboard/StudentDashboard/Payment.jsx';
+import Feedback from './Pages/Dashboard/AdminDashboard/Feedback.jsx';
 
 
 const queryClient = new QueryClient()
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/admin/manageClasses",
         element: <PrivateRoute><ManageClasses /></PrivateRoute>
+      },
+      {
+        path: "/dashboard/admin/manageClasses/feedback/:id",
+        element: <PrivateRoute><Feedback /></PrivateRoute>
       },
       {
         path: "/dashboard/admin/manageUsers",

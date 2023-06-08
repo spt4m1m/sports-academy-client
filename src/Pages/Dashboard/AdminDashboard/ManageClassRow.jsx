@@ -1,9 +1,10 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const ManageClassRow = ({ singleClass, index, refetch }) => {
-    const { classimg, classname, instructorname, instructoremail, availableseat, price, status, _id } = singleClass;
+    const { classimg, classname, instructorname, instructoremail, availableseat, price, status, _id, feedback } = singleClass;
 
     let span;
     switch (status) {
@@ -76,7 +77,7 @@ const ManageClassRow = ({ singleClass, index, refetch }) => {
                 <div>
                     <td>{status == 'approved' ? <span className='flex items-center'><Icon className='text-green-500' icon="el:ok-sign" />Approved</span> : <button disabled={status == 'deny'} onClick={() => approveClass(_id)} className='btn bg-green-600 normal-case text-white btn-xs'>Approve</button>}</td>
                     <td>{status == 'deny' ? <span className='flex items-center'><Icon className='text-red-500' icon="gridicons:cross-circle" />Denied</span> : <button disabled={status == "approved"} onClick={() => denyClass(_id)} className='btn bg-red-600 normal-case text-white btn-xs'>Deny</button>}</td>
-                    <td><button className='btn btn-primary btn-outline btn-xs'>Feedback</button></td>
+                    <td>{feedback ? <span disabled className='bg-green-500 text-white btn btn-sm normal-case'>Feedback sended</span> : <Link to={`/dashboard/admin/manageClasses/feedback/${_id}`} className='btn btn-primary btn-outline btn-xs'>Feedback</Link>}</td>
                 </div>
             </td>
         </tr>
