@@ -39,7 +39,7 @@ const Payment = () => {
                     </thead>
                     <tbody>
                         {
-                            payments.map((payment, index) => <tr key={payment._id}>
+                            [...payments].reverse().map((payment, index) => <tr key={payment._id}>
                                 <th>{index + 1}</th>
                                 <td>{payment.paymentuser}</td>
                                 <td>{payment.transectionId}</td>

@@ -62,9 +62,9 @@ const Navbar = () => {
                         {navlist}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">
+                <Link to='/' className="btn btn-ghost normal-case text-xl">
                     <img className='w-32' src={logo} alt="logo" />
-                </a>
+                </Link>
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 text-white">
