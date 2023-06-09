@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import useUserRole from '../../hooks/useUserRole/useUserRole';
 
 const SingleClass = ({ singleClass, refetch }) => {
+    const [userRole] = useUserRole();
     const [isSelected, setIsSelected] = useState(false)
     const { user } = useContext(AuthContext);
     const { classimg, classname, instructorname, instructoremail, availableseat, price } = singleClass;
@@ -47,7 +49,7 @@ const SingleClass = ({ singleClass, refetch }) => {
                 <p>Price : {price}Tk.</p>
                 <div className="card-actions justify-end">
                     {
-                        isSelected ? <span className='bg-green-500 p-2 rounded-md'>Class Selected</span> : <button onClick={() => handleSelect(singleClass)} className="btn btn-primary">Select Class</button>
+                        isSelected ? <span className='bg-green-500 p-2 rounded-md'>Class Selected</span> : <button disabled={userRole == 'instructor' || userRole == 'admin' || user == null} onClick={() => handleSelect(singleClass)} className="btn btn-primary">Select Class</button>
                     }
                 </div>
             </div>
