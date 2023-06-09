@@ -44,7 +44,7 @@ const EnrolledClass = () => {
                                     <td>{eclass.classname}</td>
                                     <td>{eclass.availableseat}</td>
                                     <td>{eclass.price}</td>
-                                    <td><button onClick={() => deleteSelectedClass(eclass._id)} className='btn bg-red-600 normal-case text-white btn-xs'>Delete</button></td>
+                                    <td><button className='btn bg-green-600 normal-case text-white btn-xs'>Enrolled</button></td>
                                 </tr>)
                             }
                         </tbody>
