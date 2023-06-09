@@ -62,7 +62,7 @@ const CheckOutForm = ({ selectedClass, price }) => {
         if (paymentIntent.status == 'succeeded') {
             setTransectionId(paymentIntent.id)
             const payment = {
-                transectionId,
+                transectionId: paymentIntent.id,
                 paymentuser: user.email,
                 price,
                 quantity: selectedClass.length,
