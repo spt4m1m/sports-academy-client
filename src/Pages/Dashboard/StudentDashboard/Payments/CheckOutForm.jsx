@@ -3,9 +3,11 @@ import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { AuthContext } from "../../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const CheckOutForm = ({ selectedClass, price }) => {
+    const navigate = useNavigate();
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useContext(AuthContext)
@@ -76,6 +78,7 @@ const CheckOutForm = ({ selectedClass, price }) => {
                             title: 'Payment Success',
                             icon: 'success'
                         })
+                        navigate('/dashboard/student/enrolledclass')
                     }
                 })
         }
