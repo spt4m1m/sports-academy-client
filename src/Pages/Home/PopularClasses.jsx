@@ -9,7 +9,7 @@ const PopularClasses = () => {
     const { isLoading, data: classes } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-            const res = await axiosSecure(`/popularclasses`);
+            const res = await axiosSecure(`/classes`);
             return res.data;
         }
     }
