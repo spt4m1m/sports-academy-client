@@ -29,7 +29,7 @@ const Register = () => {
                 if (user) {
                     updateUserProfile(user, name, photoUrl)
                         .then(() => {
-                            const saveUser = { name: user.displayName, email: user.email, role: "student" }
+                            const saveUser = { name: user.displayName, img: user.photoURL, email: user.email, role: "student" }
                             axios.post(`${import.meta.env.VITE_APP_API_URL}/users`, saveUser)
                                 .then(data => {
                                     if (data.data.data.insertedId) {
@@ -53,7 +53,7 @@ const Register = () => {
         googleLogin()
             .then(result => {
                 const user = result.user;
-                const saveUser = { name: user.displayName, email: user.email, role: "student" }
+                const saveUser = { name: user.displayName, img: user.photoURL, email: user.email, role: "student" }
                 axios.post(`${import.meta.env.VITE_APP_API_URL}/users`, saveUser)
                     .then(data => {
                         if (data.data.data.insertedId) {
