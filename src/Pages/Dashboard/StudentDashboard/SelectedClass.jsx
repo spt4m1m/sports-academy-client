@@ -43,9 +43,11 @@ const SelectedClass = () => {
     return (
         <div>
             <h1 className='text-3xl underline text-center'>Selected Classes</h1>
-            <div className='flex justify-center my-5'>
-                <Link to="/dashboard/student/paymentmethod" className='btn bg-green-600 normal-case text-white btn-sm'>Payment</Link>
-            </div>
+            {
+                selectedClass.result.length > 0 ? <div className='flex justify-center my-5'>
+                    <Link to="/dashboard/student/paymentmethod" className='btn bg-green-600 normal-case text-white btn-sm'>Payment</Link>
+                </div> : ''
+            }
             {
                 selectedClass.result.length > 0 ? <div className="overflow-x-auto mt-10">
                     <table className="table">

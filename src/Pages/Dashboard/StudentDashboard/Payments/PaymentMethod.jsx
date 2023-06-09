@@ -30,7 +30,7 @@ const PaymentMethod = () => {
 
 
             <Elements stripe={stripePromise}>
-                <CheckOutForm price={price} />
+                <CheckOutForm selectedClass={selectedClass.result} price={price} />
             </Elements>
 
         </div>

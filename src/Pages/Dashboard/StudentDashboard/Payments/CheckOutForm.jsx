@@ -2,9 +2,10 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { AuthContext } from "../../../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
-const CheckOutForm = ({ price }) => {
+const CheckOutForm = ({ selectedClass, price }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useContext(AuthContext)
@@ -14,10 +15,12 @@ const CheckOutForm = ({ price }) => {
     const [clientSecret, setClientSecret] = useState('')
 
     useEffect(() => {
-        axiosSecure.post('/create-payment-intent', { price })
-            .then(res => {
-                setClientSecret(res.data.clientSecret)
-            })
+        if (price > 0) {
+            axiosSecure.post('/create-payment-intent', { price })
+                .then(res => {
+                    setClientSecret(res.data.clientSecret)
+                })
+        }
     }, [])
 
     const handleSubmit = async (event) => {
@@ -42,7 +45,6 @@ const CheckOutForm = ({ price }) => {
         }
         else {
             setCardError('');
-            console.log('payment method', paymentMethod)
         }
 
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
@@ -59,6 +61,23 @@ const CheckOutForm = ({ price }) => {
         );
         if (paymentIntent.status == 'succeeded') {
             setTransectionId(paymentIntent.id)
+            const payment = {
+                transectionId,
+                paymentuser: user.email,
+                price,
+                quantity: selectedClass.length,
+                classesId: selectedClass.map(sclass => sclass._id),
+                classesName: selectedClass.map(sclass => sclass.classname)
+            }
+            axiosSecure.post('/payments', payment)
+                .then(res => {
+                    if (res.data.result.insertedId) {
+                        Swal.fire({
+                            title: 'Payment Success',
+                            icon: 'success'
+                        })
+                    }
+                })
         }
     }
 
