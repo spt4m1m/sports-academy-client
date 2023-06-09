@@ -9,7 +9,16 @@ const SingleClass = ({ singleClass, refetch }) => {
     const { user } = useContext(AuthContext);
     const { classimg, classname, instructorname, instructoremail, availableseat, price } = singleClass;
     const handleSelect = (classData) => {
-        // console.log('selec class', classData);
+
+        // if user not logged in show msg
+        if (user == null) {
+            return Swal.fire({
+                title: "Login first to select class",
+                icon: 'error'
+            })
+        }
+
+
         const { classname, availableseat, price } = classData;
         const { displayName, email } = user;
         const selectedClassData = {
@@ -39,7 +48,7 @@ const SingleClass = ({ singleClass, refetch }) => {
             })
     }
     return (
-        <div className="card w-96 bg-neutral gap-5 m-5 shadow-xl mx-auto text-white">
+        <div className={availableseat == 0 ? `card w-96 bg-red-600 gap-5 m-5 shadow-xl mx-auto text-white` : `card w-96 bg-neutral gap-5 m-5 shadow-xl mx-auto text-white`}>
             <figure><img src={classimg} alt="class img" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{classname}</h2>
@@ -49,7 +58,7 @@ const SingleClass = ({ singleClass, refetch }) => {
                 <p>Price : {price}Tk.</p>
                 <div className="card-actions justify-end">
                     {
-                        isSelected ? <span className='bg-green-500 p-2 rounded-md'>Class Selected</span> : <button disabled={userRole == 'instructor' || userRole == 'admin' || user == null} onClick={() => handleSelect(singleClass)} className="btn btn-primary">Select Class</button>
+                        isSelected ? <span className='bg-green-500 p-2 rounded-md'>Class Selected</span> : <button disabled={userRole == 'instructor' || userRole == 'admin' || availableseat == 0} onClick={() => handleSelect(singleClass)} className="btn btn-primary">Select Class</button>
                     }
                 </div>
             </div>
