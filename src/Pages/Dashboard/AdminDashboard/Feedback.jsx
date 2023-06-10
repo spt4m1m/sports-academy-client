@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from 'react-query';
 import Loader from '../../../Components/Loader/Loader';
 import { toast } from 'react-hot-toast';
+import Swal from 'sweetalert2';
 
 const Feedback = () => {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [axiosSecure] = useAxiosSecure()
     const { isLoading, data: sportsClass } = useQuery({
@@ -35,7 +37,11 @@ const Feedback = () => {
             .then(data => {
                 console.log(data);
                 if (data.result.modifiedCount > 0) {
-                    toast.success('send feedback success')
+                    Swal.fire({
+                        title: 'send feedback success',
+                        icon: 'success'
+                    })
+                    navigate('/dashboard/admin/manageClasses')
                     e.target.reset();
                 }
             })

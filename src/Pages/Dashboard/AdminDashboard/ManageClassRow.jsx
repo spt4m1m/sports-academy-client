@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon } from '@iconify/react';
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const ManageClassRow = ({ singleClass, index, refetch }) => {
     const { classimg, classname, instructorname, instructoremail, availableseat, price, status, _id, feedback } = singleClass;
@@ -33,7 +34,10 @@ const ManageClassRow = ({ singleClass, index, refetch }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.result.modifiedCount > 0) {
-                        toast.success('class approved')
+                        Swal.fire({
+                            title: 'Class Approved',
+                            icon: 'success'
+                        })
                         refetch();
                     }
                 })
@@ -54,7 +58,10 @@ const ManageClassRow = ({ singleClass, index, refetch }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.result.modifiedCount > 0) {
-                        toast.success('class denied')
+                        Swal.fire({
+                            title: 'class denied',
+                            icon: 'error'
+                        })
                         refetch();
                     }
                 })

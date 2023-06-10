@@ -40,7 +40,7 @@ const ManageClasses = () => {
                     </thead>
                     <tbody>
                         {
-                            classes.map((singleClass, index) => <ManageClassRow key={singleClass._id} singleClass={singleClass} index={index} refetch={refetch} />)
+                            [...classes].reverse().map((singleClass, index) => <ManageClassRow key={singleClass._id} singleClass={singleClass} index={index} refetch={refetch} />)
                         }
                     </tbody>
                 </table>
