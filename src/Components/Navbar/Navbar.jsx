@@ -6,6 +6,7 @@ import { toast } from 'react-hot-toast';
 import defaultprofile from "../../assets/imgs/defaultprofile.jpg"
 import ActiveRoute from '../ActiveRoute/ActiveRoute';
 import useUserRole from '../../hooks/useUserRole/useUserRole';
+import { Icon } from '@iconify/react';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -34,13 +35,13 @@ const Navbar = () => {
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img title={user.displayName} src={user ? user.photoURL : defaultprofile} />
+                                <img className='hover:' title={user.displayName} src={user ? user.photoURL : defaultprofile} />
                             </div>
                         </label>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-neutral rounded-box w-52">
 
-                            <li><Link to="/profile">Profile</Link></li>
-                            <li><button onClick={handleLogOut}>Logout</button></li>
+                            <li><Link to="/profile"><Icon icon="fa6-solid:user" />Profile</Link></li>
+                            <li><button onClick={handleLogOut}><Icon icon="majesticons:logout" />Logout</button></li>
                         </ul>
                     </div>
                 </>

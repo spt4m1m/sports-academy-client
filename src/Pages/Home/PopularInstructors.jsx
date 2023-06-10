@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import Loader from '../../Components/Loader/Loader';
 import Instructor from '../Instructors/Instructor';
+import { Fade } from 'react-awesome-reveal';
 
 const PopularInstructors = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -18,16 +19,18 @@ const PopularInstructors = () => {
         return <Loader />
     }
     return (
-        <div>
-            <h1 className='text-center text-3xl py-10 text-primary'>TOur Popular Instructors</h1>
+        <Fade delay={500} cascade duration={1000}>
+            <div>
+                <h1 className='text-center text-3xl py-10 text-primary'>TOur Popular Instructors</h1>
 
-            <div className='grid md:grid-cols-4'>
-                {
-                    instructors.slice(0, 6).map(instructor => <Instructor key={instructor._id} instructor={instructor} />)
-                }
+                <div className='grid md:grid-cols-4'>
+                    {
+                        instructors.slice(0, 6).map(instructor => <Instructor key={instructor._id} instructor={instructor} />)
+                    }
+                </div>
+
             </div>
-
-        </div>
+        </Fade>
     );
 };
 

@@ -11,3 +11,19 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+/* side scroll bar  */
+::-webkit-scrollbar {
+  height: 5px;
+  width: 12px;
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e1b12c;
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: black;
+}
