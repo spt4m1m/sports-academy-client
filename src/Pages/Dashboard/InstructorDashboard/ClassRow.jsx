@@ -26,7 +26,7 @@ const ClassRow = ({ singleClass, index }) => {
         <tr>
             <td>{index + 1}</td>
             <td>{classname}</td>
-            <td>{enrolled}</td>
+            <td>{enrolled ? enrolled : '0'}</td>
             <td className='flex items-center'>{span}</td>
             <td>{feedback ? <button onClick={seeFeedback} className='btn btn-primary btn-sm btn-outline'>see feedback</button> : <span>not given</span>}</td>
             <td><Link to={`/dashboard/instructor/updateclass/${_id}`} className='btn btn-primary btn-outline btn-sm'>update</Link></td>

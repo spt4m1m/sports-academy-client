@@ -11,7 +11,7 @@ const MyClasses = () => {
     const { isLoading, data: classes, refetch } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-            const res = await axiosSecure(`/classes?email=${user?.email}`);
+            const res = await axiosSecure(`/instructorclasses?email=${user?.email}`);
             return res.data;
         }
     }

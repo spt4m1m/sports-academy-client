@@ -9,7 +9,11 @@ const AllUsers = ({ user, index, refetch }) => {
         const sure = window.confirm(`are you sure ? you want to delete ${user.name}`);
         if (sure) {
             fetch(`${import.meta.env.VITE_APP_API_URL}/users/${user._id}`, {
-                method: "DELETE"
+                method: "DELETE",
+                headers: {
+                    "content-type": "application/json",
+                    authorization: `Bearer ${localStorage.getItem('access-token')}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {
@@ -26,7 +30,11 @@ const AllUsers = ({ user, index, refetch }) => {
         const sure = window.confirm(`are you sure ? you want to make admin ${user.name}`);
         if (sure) {
             fetch(`${import.meta.env.VITE_APP_API_URL}/users/admin/${user.email}`, {
-                method: "PUT"
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                    authorization: `Bearer ${localStorage.getItem('access-token')}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {
@@ -43,7 +51,11 @@ const AllUsers = ({ user, index, refetch }) => {
         const sure = window.confirm(`are you sure ? you want to remove admin ${user.name}`);
         if (sure) {
             fetch(`${import.meta.env.VITE_APP_API_URL}/users/removeadmin/${user.email}`, {
-                method: "PUT"
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                    authorization: `Bearer ${localStorage.getItem('access-token')}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {
@@ -61,7 +73,11 @@ const AllUsers = ({ user, index, refetch }) => {
         const sure = window.confirm(`are you sure ? you want to make instructor ${user.name}`);
         if (sure) {
             fetch(`${import.meta.env.VITE_APP_API_URL}/users/instructor/${user.email}`, {
-                method: "PUT"
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                    authorization: `Bearer ${localStorage.getItem('access-token')}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {
@@ -77,7 +93,11 @@ const AllUsers = ({ user, index, refetch }) => {
         const sure = window.confirm(`are you sure ? you want to remove instructor ${user.name}`);
         if (sure) {
             fetch(`${import.meta.env.VITE_APP_API_URL}/users/removeinstructor/${user.email}`, {
-                method: "PUT"
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                    authorization: `Bearer ${localStorage.getItem('access-token')}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {

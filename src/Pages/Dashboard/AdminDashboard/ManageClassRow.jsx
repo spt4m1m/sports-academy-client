@@ -19,12 +19,14 @@ const ManageClassRow = ({ singleClass, index, refetch }) => {
     }
 
 
+    // approve class by admin 
     const approveClass = (id) => {
         const sure = window.confirm('approve this calss?');
         if (sure) {
             fetch(`${import.meta.env.VITE_APP_API_URL}/classes/${id}?status=approved`, {
                 method: "PUT",
                 headers: {
+                    "content-type": "application/json",
                     authorization: `Bearer ${localStorage.getItem('access-token')}`
                 }
             })
@@ -45,6 +47,7 @@ const ManageClassRow = ({ singleClass, index, refetch }) => {
             fetch(`${import.meta.env.VITE_APP_API_URL}/classes/${id}?status=deny`, {
                 method: "PUT",
                 headers: {
+                    "content-type": "application/json",
                     authorization: `Bearer ${localStorage.getItem('access-token')}`
                 }
             })

@@ -3,8 +3,9 @@ import { AuthContext } from "../../../Providers/AuthProvider"
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../../hooks/useAxiosSecure'
 import { toast } from 'react-hot-toast';
+import Swal from 'sweetalert2';
 const AddClass = () => {
-    const [axiosSecure] = useAxiosSecure()
+    const [axiosSecure] = useAxiosSecure();
     const { user } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
@@ -20,22 +21,15 @@ const AddClass = () => {
             price: parseInt(price),
             status: 'pending'
         };
-        // console.log(classData);  
-        fetch(`${import.meta.env.VITE_APP_API_URL}/classes`, {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-                authorization: `Bearer ${localStorage.getItem('access-token')}`
-            },
-            body: JSON.stringify(classData)
+        await axiosSecure.post('/classes', classData).then(res => {
+            if (res.data.result.insertedId) {
+                Swal.fire({
+                    title: 'Class Added',
+                    icon: 'success'
+                })
+                reset();
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.result.insertedId) {
-                    toast.success('added sports class')
-                    reset()
-                };
-            })
     };
 
     return (
