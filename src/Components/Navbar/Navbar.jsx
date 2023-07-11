@@ -10,14 +10,16 @@ import { Icon } from '@iconify/react';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    const [userRole] = useUserRole();
     let dashboardUrl = "";
-    if (userRole == 'admin') {
-        dashboardUrl = "dashboard/admin/manageClasses"
-    } else if (userRole == 'instructor') {
-        dashboardUrl = "dashboard/instructor/myclasses"
-    } else {
-        dashboardUrl = "dashboard/student/selectedclass"
+    if (user) {
+        const [userRole] = useUserRole();
+        if (userRole == 'admin') {
+            dashboardUrl = "dashboard/admin/manageClasses"
+        } else if (userRole == 'instructor') {
+            dashboardUrl = "dashboard/instructor/myclasses"
+        } else {
+            dashboardUrl = "dashboard/student/selectedclass"
+        }
     }
     const handleLogOut = () => {
         logOut()

@@ -4,9 +4,13 @@ import ActiveRoute from '../../Components/ActiveRoute/ActiveRoute';
 import { Icon } from '@iconify/react';
 import { Toaster } from 'react-hot-toast';
 import useUserRole from '../../hooks/useUserRole/useUserRole';
+import Loader from '../../Components/Loader/Loader';
 
 const Dashboard = () => {
-    const [userRole] = useUserRole();
+    const [userRole, load] = useUserRole();
+    if (load) {
+        return <Loader />
+    }
     let role = '';
     if (userRole == 'admin') {
         role = 'Admin'
