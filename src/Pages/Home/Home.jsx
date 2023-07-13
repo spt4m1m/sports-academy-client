@@ -6,6 +6,7 @@ import Activities from './Activities';
 import Aboutus from './Aboutus';
 import Testimonials from './Testimonials';
 import ExpertSolutionSection from './ExpertSolutionSection';
+import Blogs from './Blogs';
 
 const Home = () => {
     return (
@@ -18,6 +19,7 @@ const Home = () => {
             <Activities />
             <ExpertSolutionSection />
             <PopularInstructors />
+            <Blogs />
             {/* extra section testimonials */}
             <Testimonials />
         </div>
