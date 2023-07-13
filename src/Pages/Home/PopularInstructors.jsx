@@ -21,7 +21,7 @@ const PopularInstructors = () => {
     return (
         <Fade delay={500} cascade duration={1000}>
             <div>
-                <h1 className='text-center text-3xl py-10 text-primary'>TOur Popular Instructors</h1>
+                <h1 className='text-center text-3xl font-bold py-10 text-primary'>Our Popular Instructors</h1>
 
                 <div className='grid md:grid-cols-4'>
                     {

@@ -5,7 +5,7 @@ const Activities = () => {
     return (
         <Fade delay={500} cascade duration={1000}>
             <div className='mt-20 mb-10'>
-                <div className="card w-96 md:w-[1000px] bg-neutral shadow-xl mx-auto">
+                <div className="card w-72  md:w-[1000px] bg-neutral shadow-xl mx-auto">
                     <div className="card-body">
                         <h2 className="card-title justify-center underline text-primary mb-3">Our Vision</h2>
                         <p>1. Providing opportunities to learn new skills, games and activities</p>
@@ -18,7 +18,7 @@ const Activities = () => {
                 </div>
 
                 {/* mission  */}
-                <div className="card w-96 md:w-[1000px] bg-neutral shadow-xl mx-auto my-10">
+                <div className="card w-72  md:w-[1000px] bg-neutral shadow-xl mx-auto my-10">
                     <div className="card-body">
                         <h2 className="card-title justify-center underline text-primary mb-3">Our Mission</h2>
                         <p>WUB Sports Club is a social impact organization that aims to promote a lifelong enjoyment of sports, while emphasizing a positive consumer experience and instilling the core values of discipline, teamwork, safety, respect and integrity.</p>
@@ -29,7 +29,7 @@ const Activities = () => {
 
 
                 {/* policy  */}
-                <div className="card w-96 md:w-[1000px] bg-neutral shadow-xl mx-auto my-10">
+                <div className="card w-72  md:w-[1000px] bg-neutral shadow-xl mx-auto my-10">
                     <div className="card-body">
                         <h2 className="card-title justify-center underline text-primary mb-3">Our Policy</h2>
                         <p>WUB Sport Club generally arranges some sort for both indoor and outdoor games. Our outdoor sports activities are-</p>

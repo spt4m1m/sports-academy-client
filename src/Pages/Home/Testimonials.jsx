@@ -20,7 +20,7 @@ const Testimonials = () => {
     return (
         <Fade delay={500} cascade duration={1000}>
             <div className=" mx-auto">
-                <h1 className='text-primary text-xl md:text-4xl text-center my-5'>Our Student Testimonials</h1>
+                <h1 className='text-primary text-3xl font-bold md:text-4xl text-center my-5'>Our Student Testimonials</h1>
                 <Swiper
                     effect={"coverflow"}
                     grabCursor={true}

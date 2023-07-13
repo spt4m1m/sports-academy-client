@@ -6,7 +6,7 @@ const HomePageSingleClass = ({ singleClass, refetch }) => {
     const { classimg, classname, instructorname, instructoremail, availableseat, price } = singleClass;
 
     return (
-        <div className={availableseat == 0 ? `card w-96 bg-red-600 gap-5 m-5 shadow-xl mx-auto text-white` : `card w-96 bg-neutral gap-5 m-5 shadow-xl mx-auto text-white`}>
+        <div className={availableseat == 0 ? `card w-72 md:w-96 bg-red-600 gap-5 m-5 shadow-xl mx-auto text-white` : `card w-72 md:w-96 bg-neutral gap-5 m-5 shadow-xl mx-auto text-white`}>
             <figure><img src={classimg} alt="class img" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{classname}</h2>

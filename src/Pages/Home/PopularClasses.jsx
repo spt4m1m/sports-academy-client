@@ -20,8 +20,8 @@ const PopularClasses = () => {
     }
     return (
         <Fade delay={500} cascade duration={1000}>
-            <div className='bg-base-200'>
-                <h1 className='text-primary text-xl md:text-4xl text-center my-5'>Popular  Classes</h1>
+            <div className='bg-base-200 py-10'>
+                <h1 className='text-primary text-3xl font-bold md:text-4xl text-center my-5'>Popular  Classes</h1>
                 <div className='grid md:grid-cols-3'>
                     {
                         classes.slice(0, 6).map(singleClass => <HomePageSingleClass key={singleClass._id} singleClass={singleClass} />)
