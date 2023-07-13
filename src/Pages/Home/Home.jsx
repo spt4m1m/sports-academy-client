@@ -5,6 +5,7 @@ import PopularInstructors from './PopularInstructors';
 import Activities from './Activities';
 import Aboutus from './Aboutus';
 import Testimonials from './Testimonials';
+import ExpertSolutionSection from './ExpertSolutionSection';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <PopularClasses />
             {/* extra section activities */}
             <Activities />
+            <ExpertSolutionSection />
             <PopularInstructors />
             {/* extra section testimonials */}
             <Testimonials />

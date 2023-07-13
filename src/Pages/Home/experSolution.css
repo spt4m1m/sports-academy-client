@@ -1,0 +1,47 @@
+.list ul {
+    list-style: none;
+    position: relative;
+}
+
+.list ul::before {
+    content: "";
+    position: absolute;
+    top: 26px;
+    left: 23px;
+    height: calc(100% - 80px);
+    width: 1px;
+    background-color: #e1b12c;
+}
+
+.list ul li {
+    display: block;
+    position: relative;
+    left: 50px;
+    margin-top: 10px;
+}
+
+.list ul li::before {
+    content: attr(data-number);
+    position: absolute;
+    top: 0;
+    left: -50px;
+    height: 45px;
+    width: 45px;
+    background-color: #f9fafb;
+    border-radius: 50%;
+    line-height: 45px;
+    text-align: center;
+    color: #e1b12c;
+    font-size: 30px;
+    border: 1px solid #e1b12c;
+}
+
+
+.list ul li strong {
+    font-size: 25px;
+}
+
+/* .list ul li p {
+    font-size: 15px;
+    margin-top: 10px;
+} */

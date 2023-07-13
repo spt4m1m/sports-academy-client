@@ -7,7 +7,6 @@ const Aboutus = () => {
         <Fade delay={500} cascade duration={1000}>
             <div>
                 <h1 className='text-primary text-xl md:text-4xl text-center my-5'>About Us</h1>
-
                 <div className="hero h-[700px]">
                     <div className="hero-content flex-col lg:flex-row-reverse">
                         <img src={aboutus} className="max-w-sm md:max-w-lg rounded-lg shadow-2xl" />

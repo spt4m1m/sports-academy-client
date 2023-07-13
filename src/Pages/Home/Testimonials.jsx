@@ -19,7 +19,7 @@ import { Fade } from "react-awesome-reveal";
 const Testimonials = () => {
     return (
         <Fade delay={500} cascade duration={1000}>
-            <div className=" mx-auto">
+            <div className=" mx-auto bg-base-200">
                 <h1 className='text-primary text-xl md:text-4xl text-center my-5'>Our Student Testimonials</h1>
                 <Swiper
                     effect={"coverflow"}

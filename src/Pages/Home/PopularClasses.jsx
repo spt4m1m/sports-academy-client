@@ -20,7 +20,7 @@ const PopularClasses = () => {
     }
     return (
         <Fade delay={500} cascade duration={1000}>
-            <div>
+            <div className='bg-base-200'>
                 <h1 className='text-primary text-xl md:text-4xl text-center my-5'>Popular  Classes</h1>
                 <div className='grid md:grid-cols-3'>
                     {
