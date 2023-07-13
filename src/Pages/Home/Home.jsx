@@ -7,6 +7,7 @@ import Aboutus from './Aboutus';
 import Testimonials from './Testimonials';
 import ExpertSolutionSection from './ExpertSolutionSection';
 import Blogs from './Blogs';
+import Newsletter from './Newsletter';
 
 const Home = () => {
     return (
@@ -22,6 +23,7 @@ const Home = () => {
             <Blogs />
             {/* extra section testimonials */}
             <Testimonials />
+            <Newsletter />
         </div>
     );
 };
